@@ -1,4 +1,6 @@
+# Ignore class files and bin directory
 *.class
+bin/
 
 # Package Files #
 *.jar

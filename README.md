@@ -4,6 +4,12 @@ Look-and-Feel optimizer for Swing: i.e., "get that Metal out of here."
 
 It basically tries to use your native OS look-and-feel, unless that's Metal, too. If it is, it just disables a bunch of bold stuff so it looks *less* ugly."
 
+## Usage
+
+In your `SwingUtilities.invokeLater` call that starts your application, add a call to `LAFOptimizer.optimizeSwing()` before you instantiate any Swing components. That is, it should be the first statement in your callback.
+
+If there are other things before the call to `optimizeSwing`, you may get inconsistent styling.
+
 ## Demo
 
 Here's a demo with some random components. This is running on Linux, and I've included a native app in the background for comparison.

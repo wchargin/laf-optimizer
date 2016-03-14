@@ -3,6 +3,7 @@ package util;
 import java.awt.Font;
 
 import javax.swing.UIManager;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.FontUIResource;
 
@@ -46,6 +47,19 @@ public class LAFOptimizer {
 		} catch (Exception e) {
 			// Last resort.
 			UIManager.put("swing.boldMetal", Boolean.FALSE); //$NON-NLS-1$
+		}
+
+		if (systemLaf.toLowerCase().contains("gtk")) {
+			// GTK has a really cramped combo-box appearance.
+			// We can fix it by putting a border
+			// around the default renderer component.
+			final Border comboBoxBorder = new EmptyBorder(5, 5, 5, 5);
+			UIManager.put("List.cellNoFocusBorder",
+					comboBoxBorder);
+			UIManager.put("List.focusCellHighlightBorder",
+					comboBoxBorder);
+			UIManager.put("List.focusSelectedCellHighlightBorder",
+					comboBoxBorder);
 		}
 
 		if (systemLaf.toLowerCase().contains("windows")) { //$NON-NLS-1$
